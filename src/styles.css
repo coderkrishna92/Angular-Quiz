@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* The below style rules apply when the user is having data entered for the username and email*/
 input.ng-invalid.ng-dirty {
   border-bottom-color: #e91e63 !important;
   box-shadow: #e91e63 !important;
 }
 
+/* The below rule sets width of the submit button */
 button.btn-submit {
   width: 100%;
 }

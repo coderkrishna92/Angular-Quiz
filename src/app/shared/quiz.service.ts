@@ -23,4 +23,8 @@ export class QuizService {
 
     return this.httpClient.post(this.rootUrl + '/api/InsertParticipant', body);
   }
+
+  getQuestions() {
+    return this.httpClient.get(this.rootUrl + '/api/Questions');
+  }
 }

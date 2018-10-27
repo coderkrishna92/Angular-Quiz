@@ -8,6 +8,10 @@ export class QuizService {
 
   /*--Properties--*/
   readonly rootUrl = 'http://localhost:53152';
+  qns: any[]; // The 10 random questions
+  seconds: number; // Total time taken by the participant
+  timer; // Counting the amount of time taken by the participant
+  qnProgress: number; // Which question the participant is attempting to answer
 
 
   /*--Helper methods--*/

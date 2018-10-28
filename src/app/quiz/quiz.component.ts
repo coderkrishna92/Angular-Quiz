@@ -35,7 +35,12 @@ export class QuizComponent implements OnInit {
   }
 
   Answer(questionId, choice) {
-
+    this.quizService.qns[this.quizService.qnProgress].answer = choice;
+    this.quizService.qnProgress++;
+    if (this.quizService.qnProgress == 10){
+      clearInterval(this.quizService.timer);
+      this.router.navigate(['/result']);
+    }
   }
 
 }

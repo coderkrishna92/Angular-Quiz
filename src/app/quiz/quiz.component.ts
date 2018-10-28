@@ -21,6 +21,7 @@ export class QuizComponent implements OnInit {
     this.quizService.getQuestions().subscribe(
       (data: any) => {
         this.quizService.qns = data;
+        console.log(data);
         this.startTimer();
       }
     );
@@ -31,6 +32,10 @@ export class QuizComponent implements OnInit {
       // Incrementing the timer by 1
       this.quizService.seconds++;
     }, 1000);
+  }
+
+  Answer(questionId, choice) {
+
   }
 
 }

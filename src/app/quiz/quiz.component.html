@@ -5,7 +5,7 @@
     <!--Showing the amount of time that has elapsed-->
     <span>Time Elapsed: {{quizService.displayTimeElapsed()}}</span>
 
-    <!--Showing the progress bar-->
+    <!--Showing the progress bar, stopping at 1 hr 6 min 48 secs-->
     <div class="progress">
       <div class="determinate" [style.width.%]="(quizService.qnProgress+1)*10"></div>
     </div>

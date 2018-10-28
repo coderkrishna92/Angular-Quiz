@@ -12,7 +12,7 @@ export class QuizService {
   seconds: number; // Total time taken by the participant
   timer; // Counting the amount of time taken by the participant
   qnProgress: number; // Which question the participant is attempting to answer
-
+  correctAnswerCount: number = 0; // The count of the correct answers, initialize to 0
 
   /*--Helper methods--*/
 
@@ -21,6 +21,11 @@ export class QuizService {
   displayTimeElapsed() {
     return Math.floor(this.seconds / 3600) + ':' + Math.floor(this.seconds / 60) +
     ':' + Math.floor(this.seconds % 60);
+  }
+
+  getParticipantName() {
+    var participant = JSON.parse(localStorage.getItem('participant'));
+    return participant.Name;
   }
 
   /*--Http methods--*/
@@ -35,5 +40,17 @@ export class QuizService {
 
   getQuestions() {
     return this.httpClient.get(this.rootUrl + '/api/Questions');
+  }
+
+  getAnswers() {
+    var body = this.qns.map(x => x.QuestionId);
+    return this.httpClient.post(this.rootUrl + '/api/Answers', body);
+  }
+
+  submitScore() {
+    var body = JSON.parse(localStorage.getItem('participant'));
+    body.Score = this.correctAnswerCount;
+    body.TimeSpent = this.seconds;
+    return this.httpClient.post(this.rootUrl + "/api/UpdateOutput", body);
   }
 }

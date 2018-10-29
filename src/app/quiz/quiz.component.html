@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="row" *ngIf="quizService.qns">
+<div class="row" *ngIf="quizService.qns && this.quizService.qnProgress != 10">
   <div class="col s8 offset-s2">
 
     <!--Showing the amount of time that has elapsed-->

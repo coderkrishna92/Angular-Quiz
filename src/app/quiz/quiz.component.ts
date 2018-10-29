@@ -24,7 +24,7 @@ export class QuizComponent implements OnInit {
       } else {
         this.startTimer();
       }
-    }
+    } else {
 
     // Initializing various things
     this.quizService.seconds = 0;
@@ -35,8 +35,8 @@ export class QuizComponent implements OnInit {
         this.quizService.qns = data;
         console.log(data);
         this.startTimer();
-      }
-    );
+      });
+    }
   }
 
   startTimer() {

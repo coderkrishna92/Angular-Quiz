@@ -13,6 +13,11 @@ export class ResultComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    if (parseInt(localStorage.getItem('quProgress')) == 10) {
+      this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
+      this.quizService.qnProgress = parseInt(localStorage.getItem('qnProgress'));
+      this.quizService.qns = JSON.parse(localStorage.getItem('qns'));
+
     this.quizService.getAnswers().subscribe(
       (data: any) => {
         // Resetting the correct answer count to 0
@@ -25,8 +30,10 @@ export class ResultComponent implements OnInit {
             e.correct = data[i];
           }
         });
-      }
-    );
+      });
+    } else {
+      this.router.navigate(['/quiz']);
+    }
   }
 
   OnSubmit() {
@@ -36,6 +43,9 @@ export class ResultComponent implements OnInit {
   }
 
   restart() {
+    localStorage.setItem('qnProgress', "0");
+    localStorage.setItem('qns', "");
+    localStorage.setItem('seconds', "0");
     this.router.navigate(['/quiz']);
   }
 
